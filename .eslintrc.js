@@ -18,9 +18,9 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
   rules: {
     'prettier/prettier': 'error',
+    camelcase: 'off',
     'import/prefer-default-export': 'off',
     'consistent-return': 'off',
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
