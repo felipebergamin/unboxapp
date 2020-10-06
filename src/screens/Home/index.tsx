@@ -6,6 +6,7 @@ import {
   ListRenderItemInfo,
   useWindowDimensions,
   View,
+  StatusBar,
 } from 'react-native';
 import { scale, verticalScale } from 'react-native-size-matters';
 import { human, systemWeights } from 'react-native-typography';
@@ -127,6 +128,7 @@ const Home: React.FC = () => {
 
   return (
     <Container>
+      <StatusBar hidden />
       <Carousel
         data={trendingMovies}
         renderItem={renderCover}
