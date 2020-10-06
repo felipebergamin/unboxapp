@@ -7,6 +7,7 @@ import {
   useWindowDimensions,
   View,
   StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 import { scale, verticalScale } from 'react-native-size-matters';
 import { human, systemWeights } from 'react-native-typography';
@@ -66,7 +67,9 @@ const Home: React.FC = () => {
       }w500/${item.backdrop_path?.substring(1)}`; // .substring(1) removes the slash from backdrop_path
 
       return (
-        <>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Details', { id: item.id })}
+        >
           <Image
             resizeMode="cover"
             style={{
@@ -92,7 +95,7 @@ const Home: React.FC = () => {
               {item.title}
             </Text>
           </View>
-        </>
+        </TouchableOpacity>
       );
     },
     [config, window.width],
