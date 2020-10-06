@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+
+import ConfigProvider from '~/contexts/config';
+import Routes from '~/routes';
 
 const App = () => {
   return (
-    <View>
-      <Text>Hello World</Text>
-    </View>
+    <ConfigProvider>
+      <Routes />
+    </ConfigProvider>
   );
 };
 
