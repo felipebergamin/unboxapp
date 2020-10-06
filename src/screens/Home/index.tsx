@@ -11,6 +11,7 @@ import {
 import { scale, verticalScale } from 'react-native-size-matters';
 import { human, systemWeights } from 'react-native-typography';
 import Carousel from 'react-native-snap-carousel';
+import { useNavigation } from '@react-navigation/native';
 
 import { ConfigContext } from '~/contexts/config';
 import IApiResponse from '~/interfaces/IApIResponse';
@@ -28,6 +29,7 @@ interface IGenresList extends IGenre {
 }
 
 const Home: React.FC = () => {
+  const navigation = useNavigation();
   const { values: config } = useContext(ConfigContext);
   const window = useWindowDimensions();
   const [trendingMovies, setTrendingMovies] = useState<IMovie[] | null>(null);
@@ -61,7 +63,7 @@ const Home: React.FC = () => {
     ({ item }: ListRenderItemInfo<IMovie>) => {
       const posterPath = `${
         config?.images.secure_base_url
-      }w500/${item.backdrop_path?.substring(1)}`;
+      }w500/${item.backdrop_path?.substring(1)}`; // .substring(1) removes the slash from backdrop_path
 
       return (
         <>
@@ -103,7 +105,9 @@ const Home: React.FC = () => {
       }w500/${item.poster_path?.substring(1)}`;
 
       return (
-        <MovieCardContainer>
+        <MovieCardContainer
+          onPress={() => navigation.navigate('Details', { id: item.id })}
+        >
           {item.poster_path && (
             <Image
               resizeMode="contain"
@@ -119,7 +123,7 @@ const Home: React.FC = () => {
         </MovieCardContainer>
       );
     },
-    [config],
+    [config, navigation],
   );
 
   if (!trendingMovies) return <Text>Loading...</Text>;

@@ -5,14 +5,22 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import Home from '~/screens/Home';
+import Detail from '~/screens/Detail';
 
-const Stack = createStackNavigator();
+export type StackScreensParams = {
+  List: {};
+  Details: {
+    id: number;
+  };
+};
+
+const Stack = createStackNavigator<StackScreensParams>();
 const Tabs = createBottomTabNavigator();
 
 const ShowNavigator = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="List" component={Home} />
-    <Stack.Screen name="Details" component={Home} />
+    <Stack.Screen name="Details" component={Detail} />
   </Stack.Navigator>
 );
 

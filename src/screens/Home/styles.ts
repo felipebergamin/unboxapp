@@ -5,7 +5,7 @@ export const Container = styled.ScrollView`
   flex: 1;
 `;
 
-export const MovieCardContainer = styled.View`
+export const MovieCardContainer = styled.TouchableOpacity`
   flex-direction: column;
   background-color: #ddd;
   margin: 0 ${scale(10)}px;
