@@ -50,7 +50,7 @@ const Search: React.FC = () => {
         >
           {item.poster_path && (
             <Image
-              resizeMode="contain"
+              resizeMode="cover"
               style={{
                 width: scale(140),
                 aspectRatio: 0.65,
@@ -74,6 +74,7 @@ const Search: React.FC = () => {
         onChangeText={setSearch}
         returnKeyType="search"
         onSubmitEditing={performSearch}
+        selectTextOnFocus
       />
 
       {searchResult && searchResult.length > 0 ? (
